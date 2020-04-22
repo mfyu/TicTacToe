@@ -8,6 +8,7 @@ class Client(ConnectionListener, TicTacToe):
         self.Connect((host, port))
         self.players = {}
         self.data = []
+        self.piece = ""
         TicTacToe.__init__(self)
     
     def Loop(self):

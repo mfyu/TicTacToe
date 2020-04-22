@@ -11,7 +11,7 @@ white = (255,255,255)
 black = (0,0,0)
 pygame.font.init()
 fnt = pygame.font.SysFont("Arial", 18)
-txtpos = (100, 90)
+
 
 
 class TicTacToe:
@@ -22,7 +22,6 @@ class TicTacToe:
         self.board = [[None, None, None],[None, None, None],[None, None, None]]
         self.gameOver = False
         self.draw = False
-        self.piece = ""
         self.drawNewBoard()
         
     
@@ -44,7 +43,6 @@ class TicTacToe:
         row = data['row']
         col = data['col']
         print(data)
-        #screen.fill([0, 0, 0])
         white = (255,255,250)
 
         x = col*100+50
