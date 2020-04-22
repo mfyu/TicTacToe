@@ -5,8 +5,10 @@ Cmpe 207 Project
 
 python server.py IP:PORT
 
-2. Connect clients using
+2. Connect 2 clients using
 
 python client.py IP:PORT
 
-Can use "localhost" as IP to run on one computer
+Can use "localhost" as IP to run locally
+
+3. Play game
