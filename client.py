@@ -2,14 +2,15 @@ import sys, math
 from time import sleep
 from PodSixNet.Connection import connection, ConnectionListener
 from TicTacToe import TicTacToe
-
+temp = ""
 class Client(ConnectionListener, TicTacToe):
     def __init__(self, host, port):
         self.Connect((host, port))
         self.players = {}
         self.data = []
-        self.piece = ""
+       
         TicTacToe.__init__(self)
+        
     
     def Loop(self):
         self.Pump()
@@ -21,7 +22,7 @@ class Client(ConnectionListener, TicTacToe):
         print(e.pos)
         col = math.floor(e.pos[0]/100)
         row = math.floor(e.pos[1]/100)
-        connection.Send({"action": "click", "position": e.pos, "turn" : "x", "row":row, "col": col})
+        connection.Send({"action": "click", "position": e.pos, "row":row, "col": col})
 
     def newGame(self):
 

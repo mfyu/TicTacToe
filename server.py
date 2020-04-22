@@ -16,7 +16,7 @@ class ServerChannel(Channel):
         Channel.__init__(self, *args, **kwargs)
         self.id = str(self._server.NextId())
         intid = int(self.id)
-        self.color = [(intid + 1) % 3 * 84, (intid + 2) % 3 * 84, (intid + 3) % 3 * 84] #tuple([randint(0, 127) for r in range(3)])
+        self.color = [] 
         self.lines = []
         #self.PassOn(self.id)
     
@@ -39,13 +39,6 @@ class ServerChannel(Channel):
         print(data)
         self.PassOn(data)
     
-    def Network_startline(self, data):
-        self.lines.append([data['point']])
-        self.PassOn(data)
-    
-    def Network_drawpoint(self, data):
-        self.lines[-1].append(data['point'])
-        self.PassOn(data)
 
 class TicTacToeServer(Server):
     channelClass = ServerChannel
@@ -66,7 +59,6 @@ class TicTacToeServer(Server):
     def AddPlayer(self, player):
         print("New Player" + str(player.addr))
         self.players[player] = True
-        player.Send({"action": "initial", "lines": dict([(p.id, {"color": p.color, "lines": p.lines}) for p in self.players])})
         self.SendPlayers()
     
     def DelPlayer(self, player):
