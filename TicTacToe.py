@@ -22,6 +22,7 @@ class TicTacToe:
         self.board = [[None, None, None],[None, None, None],[None, None, None]]
         self.gameOver = False
         self.draw = False
+        self.piece = ""
         self.drawNewBoard()
         
     
@@ -34,7 +35,6 @@ class TicTacToe:
                 if self.gameOver is False:
                     self.Click(event)
                 else:
-                    self.drawNewBoard()
                     self.newGame()
                     
     
@@ -43,7 +43,7 @@ class TicTacToe:
         print("turn")
         row = data['row']
         col = data['col']
-        xo = "X"
+        print(data)
         #screen.fill([0, 0, 0])
         white = (255,255,250)
 
@@ -52,16 +52,22 @@ class TicTacToe:
         #check if board position is empty
         if (row<3 and col<3):
             if (self.board[row][col] is None):
-                if (self.turn == 2):
+                if (self.turn == 2 and self.piece is not "X"):
                     pygame.draw.circle(screen, white, (x,y), 30,2)
-                    self.board[row][col] = 'X'
+                    self.board[row][col] = 'O'
                     self.turn = 1
+                    if self.piece == "":
+                    	self.piece = "O"
+                    print(self.piece)
                     print(self.turn)
-                elif(self.turn == 1):
+                elif(self.turn == 1 and self.piece is not "O"):
                     pygame.draw.line(screen, white, (x-25,y-25), (x+25,y+25), 2)
                     pygame.draw.line(screen, white, (x+25,y-25), (x-25,y+25), 2)
-                    self.board[row][col] = 'O'
+                    self.board[row][col] = 'X'
                     self.turn = 2
+                    if self.piece is "":
+                    	self.piece = "X" 
+                    print(self.piece)
                     print(self.turn)
 
             self.checkWin()
