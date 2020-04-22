@@ -1,5 +1,4 @@
-# TicTacToe
-Cmpe 207 Project
+# TicTacToe - CMPE 207 Project Team KMS
 
 1. Set up server using
 
@@ -11,4 +10,4 @@ python client.py IP:PORT
 
 Can use "localhost" as IP to run locally
 
-3. Play game
+3. Play game!
